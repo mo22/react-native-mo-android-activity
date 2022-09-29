@@ -8,6 +8,7 @@ import android.net.Uri;
 import com.facebook.react.bridge.ActivityEventListener;
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.Promise;
+import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
@@ -17,8 +18,15 @@ import java.lang.reflect.Field;
 import java.util.Objects;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 
 public final class ReactNativeMoAndroidActivity extends ReactContextBaseJavaModule {
+
+    public ReactNativeMoAndroidActivity(@Nullable ReactApplicationContext reactContext) {
+        super(reactContext);
+    }
+
     @Override
     public @Nonnull
     String getName() {
