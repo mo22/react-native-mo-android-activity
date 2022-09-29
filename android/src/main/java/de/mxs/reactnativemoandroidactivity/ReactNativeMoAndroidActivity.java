@@ -1,63 +1,22 @@
 package de.mxs.reactnativemoandroidactivity;
 
 import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-
-import androidx.annotation.Nullable;
-import androidx.core.content.FileProvider;
-import androidx.exifinterface.media.ExifInterface;
-
-import android.media.ThumbnailUtils;
 import android.net.Uri;
-import android.os.Build;
-import android.os.Bundle;
-import android.provider.MediaStore;
-import android.text.TextUtils;
-import android.util.AtomicFile;
-import android.util.Base64;
-import android.util.Log;
-import android.webkit.MimeTypeMap;
 
 import com.facebook.react.bridge.ActivityEventListener;
 import com.facebook.react.bridge.Arguments;
-import com.facebook.react.bridge.LifecycleEventListener;
 import com.facebook.react.bridge.Promise;
-import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
-import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
-import com.facebook.react.bridge.WritableArray;
 import com.facebook.react.bridge.WritableMap;
-import com.facebook.react.modules.blob.BlobModule;
-import com.facebook.react.modules.core.DeviceEventManagerModule;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.RandomAccessFile;
 import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
-import java.security.MessageDigest;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 
 import javax.annotation.Nonnull;
-import javax.crypto.Cipher;
-import javax.crypto.Mac;
-import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
 
 public final class ReactNativeMoAndroidActivity extends ReactContextBaseJavaModule {
     @Override
@@ -137,7 +96,7 @@ public final class ReactNativeMoAndroidActivity extends ReactContextBaseJavaModu
                 public void onActivityResult(Activity activity, int code, int result, @Nullable Intent intent) {
                     if (code != requestCode) return;
                     getReactApplicationContext().removeActivityEventListener(this);
-                    Log.i("XXX", "onActivityResult code=" + code + " result=" + result + " intent=" + intent);
+//                    Log.i("XXX", "onActivityResult code=" + code + " result=" + result + " intent=" + intent);
                     WritableMap res = Arguments.createMap();
                     res.putInt("result", result);
                     promise.resolve(res);
@@ -147,7 +106,6 @@ public final class ReactNativeMoAndroidActivity extends ReactContextBaseJavaModu
                 }
             };
             getReactApplicationContext().addActivityEventListener(listener);
-            Log.i("XXX", "startActivityForResult intent=" + intent + " requestCode=" + requestCode);
             boolean res = getReactApplicationContext().startActivityForResult(intent, requestCode, null);
             if (!res) {
                 throw new RuntimeException("cannot start activity");
