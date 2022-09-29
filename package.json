@@ -1,0 +1,34 @@
+{
+  "name": "react-native-mo-android-activity",
+  "version": "0.1.1",
+  "description": "react native component to launch android activities",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "package.json",
+    "src/*",
+    "lib/*",
+    "android"
+  ],
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mo22/react-native-mo-android-activity.git"
+  },
+  "author": "Moritz Moeller <mm@mxs.de>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mo22/react-native-mo-android-activity/issues"
+  },
+  "homepage": "https://github.com/mo22/react-native-mo-android-activity#readme",
+  "devDependencies": {
+    "@types/react-native": "^0.70.4",
+    "react": "^18.2.0",
+    "react-native": "^0.70.1",
+    "typescript": "^4.8.4"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  }
+}
